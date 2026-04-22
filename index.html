@@ -3,167 +3,273 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Motos González | Concesionario Oficial Albacete</title>
+    <title>Motos González | Concesionario Oficial</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
-        body { font-family: 'Inter', sans-serif; }
-        .moto-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-        .moto-card:hover { transform: translateY(-8px); border-color: #ef4444; }
+        body { font-family: sans-serif; }
+        .moto-card { transition: all 0.2s ease; cursor: pointer; }
+        .moto-card:hover { transform: scale(1.02); border-color: #ef4444; box-shadow: 0 10px 30px -10px rgba(239,68,68,0.3); }
+        
+        /* Animación para la ventana emergente */
+        #moto-modal { transition: opacity 0.3s ease; }
+        .modal-content { transition: transform 0.3s ease; }
+        #moto-modal.hidden { opacity: 0; pointer-events: none; }
+        #moto-modal:not(.hidden) .modal-content { transform: scale(1); }
+        #moto-modal.hidden .modal-content { transform: scale(0.95); }
     </style>
 </head>
-<body class="bg-black text-white antialiased">
+<body class="bg-black text-white relative">
 
-    <header class="sticky top-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
+    <header class="sticky top-0 z-40 bg-black/90 backdrop-blur border-b border-white/10 shadow-lg">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-black italic tracking-tighter">
-                MOTOS <span class="text-red-600">GONZÁLEZ</span>
-            </div>
+            <div class="text-xl font-bold italic tracking-tighter">MOTOS <span class="text-red-600">GONZÁLEZ</span></div>
             
-            <nav class="hidden md:flex items-center gap-2">
-                <a href="#rieju" class="px-4 py-2 rounded-full text-sm font-bold hover:bg-white/10 transition">RIEJU</a>
-                <a href="#kymco" class="px-4 py-2 rounded-full text-sm font-bold hover:bg-white/10 transition">KYMCO</a>
-                <a href="#ubicacion" class="px-4 py-2 rounded-full text-sm font-bold hover:bg-white/10 transition">UBICACIÓN</a>
+            <nav class="flex gap-2">
+                <a href="#rieju" class="bg-zinc-900 hover:bg-red-600 text-white px-4 py-2 rounded text-xs font-bold transition">VER RIEJU</a>
+                <a href="#kymco" class="bg-zinc-900 hover:bg-blue-600 text-white px-4 py-2 rounded text-xs font-bold transition">VER KYMCO</a>
             </nav>
-
-            <a href="https://wa.me/34600000000" class="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-full text-sm font-bold transition flex items-center gap-2">
-                <i class="fa-brands fa-whatsapp"></i> CONTACTAR
-            </a>
+            
+            <a href="https://wa.me/34600000000" class="hidden md:block bg-green-600 hover:bg-green-500 px-4 py-2 rounded-full text-xs font-bold transition"><i class="fa-brands fa-whatsapp mr-1"></i> Contactar</a>
         </div>
     </header>
 
-    <section class="relative h-[60vh] flex items-center justify-center text-center px-6 border-b border-white/5">
-        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1558981403-c5f9899a28bc?q=80&w=2070')] bg-cover bg-center opacity-30"></div>
-        <div class="relative z-10">
-            <h1 class="text-5xl md:text-7xl font-black mb-4 tracking-tighter uppercase">TU PRÓXIMA <span class="text-red-600 text-outline">AVENTURA</span></h1>
-            <p class="text-gray-400 max-w-xl mx-auto text-lg font-light">Concesionario Oficial Rieju y Kymco en Albacete. Entrega inmediata y financiación a medida.</p>
-        </div>
-    </section>
-
-    <section id="rieju" class="py-24 max-w-7xl mx-auto px-6">
-        <div class="flex items-end gap-4 mb-12">
-            <div>
-                <h2 class="text-4xl font-black italic uppercase tracking-tighter">GAMA <span class="text-red-600">RIEJU</span></h2>
-                <div class="h-1 w-20 bg-red-600 mt-2"></div>
-            </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="moto-card bg-zinc-900/50 border border-white/5 rounded-2xl overflow-hidden group">
-                <div class="h-64 bg-white p-6 relative overflow-hidden">
-                    <img src="https://viviendoconmotos.com/wp-content/uploads/2021/05/rieju_mrt_50_sm_2021_1.jpg" class="w-full h-full object-contain group-hover:scale-110 transition duration-500">
+    <section id="rieju" class="py-20 max-w-7xl mx-auto px-6">
+        <h2 class="text-3xl font-black italic mb-2 uppercase text-red-600">GAMA RIEJU</h2>
+        <p class="text-gray-400 mb-10 text-sm">Toca cualquier moto para ver especificaciones completas.</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div onclick="abrirMoto('mrt50')" class="moto-card bg-zinc-900 rounded-2xl border border-white/10 overflow-hidden">
+                <div class="bg-white h-56 flex items-center justify-center p-4">
+                    <img src="https://images.unsplash.com/photo-1568772585407-9361f9bf3c87?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover rounded" alt="MRT 50">
                 </div>
                 <div class="p-6">
-                    <h3 class="text-xl font-bold uppercase">MRT 50 SM PRO</h3>
-                    <p class="text-red-500 font-black text-2xl mt-1">3.742 €</p>
-                    <p class="text-gray-500 text-sm mt-4">La supermotard definitiva para iniciarse con los mejores componentes.</p>
+                    <h3 class="font-bold uppercase text-lg">MRT 50 SM PRO</h3>
+                    <p class="text-red-600 font-black text-xl">3.742 €</p>
+                    <p class="text-xs text-gray-500 mt-2 font-bold uppercase"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Ver detalles</p>
                 </div>
             </div>
 
-            <div class="moto-card bg-zinc-900/50 border border-white/5 rounded-2xl overflow-hidden group">
-                <div class="h-64 bg-white p-6">
-                    <img src="https://motos.net.co/wp-content/uploads/2023/10/Rieju-Aventura-500-Legend-8.jpg" class="w-full h-full object-contain group-hover:scale-110 transition duration-500">
+            <div onclick="abrirMoto('aventura500')" class="moto-card bg-zinc-900 rounded-2xl border border-white/10 overflow-hidden border-red-600/50">
+                <div class="bg-white h-56 flex items-center justify-center p-4 relative">
+                    <span class="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 z-10">TOP VENTAS</span>
+                    <img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover rounded" alt="AVENTURA 500">
                 </div>
                 <div class="p-6">
-                    <h3 class="text-xl font-bold uppercase">Aventura 500 Legend</h3>
-                    <p class="text-red-500 font-black text-2xl mt-1">7.399 €</p>
-                    <p class="text-gray-500 text-sm mt-4">Doble depósito para una autonomía récord de 1.000km.</p>
+                    <h3 class="font-bold uppercase text-lg">Aventura 500 Legend</h3>
+                    <p class="text-red-600 font-black text-xl">7.399 €</p>
+                    <p class="text-xs text-gray-500 mt-2 font-bold uppercase"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Ver detalles</p>
                 </div>
             </div>
 
-            <div class="moto-card bg-zinc-900/50 border border-white/5 rounded-2xl overflow-hidden group">
-                <div class="h-64 bg-white p-6">
-                    <img src="https://viviendoconmotos.com/wp-content/uploads/2018/05/rieju_century_125_7.jpg" class="w-full h-full object-contain group-hover:scale-110 transition duration-500">
+            <div onclick="abrirMoto('century125')" class="moto-card bg-zinc-900 rounded-2xl border border-white/10 overflow-hidden">
+                <div class="bg-white h-56 flex items-center justify-center p-4">
+                    <img src="https://images.unsplash.com/photo-1615172282427-9a57ef2d142e?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover rounded" alt="CENTURY 125">
                 </div>
                 <div class="p-6">
-                    <h3 class="text-xl font-bold uppercase">Century 125 Scrambler</h3>
-                    <p class="text-red-500 font-black text-2xl mt-1">3.599 €</p>
-                    <p class="text-gray-500 text-sm mt-4">Diseño icónico neo-retro con toda la potencia permitida para carnet B.</p>
+                    <h3 class="font-bold uppercase text-lg">Century 125</h3>
+                    <p class="text-red-600 font-black text-xl">3.599 €</p>
+                    <p class="text-xs text-gray-500 mt-2 font-bold uppercase"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Ver detalles</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="kymco" class="py-24 bg-zinc-950 border-y border-white/5">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex items-end gap-4 mb-12">
-                <div>
-                    <h2 class="text-4xl font-black italic uppercase tracking-tighter">GAMA <span class="text-blue-500">KYMCO</span></h2>
-                    <div class="h-1 w-20 bg-blue-500 mt-2"></div>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="moto-card bg-black border border-white/5 rounded-2xl overflow-hidden group">
-                    <div class="h-64 bg-white p-6">
-                        <img src="https://static.kymco.es/uploads/fichas/agility-city-125/colores/agility-city-125-azul.png" class="w-full h-full object-contain group-hover:scale-110 transition duration-500">
+    <section id="kymco" class="py-20 bg-zinc-950 px-6 border-t border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-black italic mb-2 uppercase text-blue-500">GAMA KYMCO</h2>
+            <p class="text-gray-400 mb-10 text-sm">Toca cualquier moto para ver especificaciones completas.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div onclick="abrirMoto('agility125')" class="moto-card bg-black rounded-2xl border border-white/10 overflow-hidden">
+                    <div class="bg-white h-56 flex items-center justify-center p-4">
+                        <img src="https://images.unsplash.com/photo-1591157419139-2ce181a4eb8b?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover rounded" alt="AGILITY">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold uppercase">Agility City 125</h3>
-                        <p class="text-blue-500 font-black text-2xl mt-1">2.399 €</p>
-                        <p class="text-gray-500 text-sm mt-4">La reina de la ciudad. Rueda alta y suelo plano para máxima comodidad.</p>
+                        <h3 class="font-bold uppercase text-lg">Agility City 125</h3>
+                        <p class="text-blue-500 font-black text-xl">2.399 €</p>
+                        <p class="text-xs text-gray-500 mt-2 font-bold uppercase"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Ver detalles</p>
                     </div>
                 </div>
 
-                <div class="moto-card bg-black border border-white/5 rounded-2xl overflow-hidden group">
-                    <div class="h-64 bg-white p-6">
-                        <img src="https://static.kymco.es/uploads/fichas/dtx-125/colores/dtx-125-naranja.png" class="w-full h-full object-contain group-hover:scale-110 transition duration-500">
+                <div onclick="abrirMoto('dtx125')" class="moto-card bg-black rounded-2xl border border-white/10 overflow-hidden">
+                    <div class="bg-white h-56 flex items-center justify-center p-4">
+                        <img src="https://images.unsplash.com/photo-1621008620894-323eaf4eec57?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover rounded" alt="DTX">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold uppercase">DTX 125 Crossover</h3>
-                        <p class="text-blue-500 font-black text-2xl mt-1">4.399 €</p>
-                        <p class="text-gray-400 text-sm mt-4">El primer scooter "crossover". Preparado para asfalto y caminos.</p>
+                        <h3 class="font-bold uppercase text-lg">DTX 125</h3>
+                        <p class="text-blue-500 font-black text-xl">4.399 €</p>
+                        <p class="text-xs text-gray-500 mt-2 font-bold uppercase"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Ver detalles</p>
                     </div>
                 </div>
 
-                <div class="moto-card bg-black border border-white/5 rounded-2xl overflow-hidden group">
-                    <div class="h-64 bg-white p-6">
-                        <img src="https://static.kymco.es/uploads/fichas/ak-550-premium/colores/ak-550-premium-negro.png" class="w-full h-full object-contain group-hover:scale-110 transition duration-500">
+                <div onclick="abrirMoto('ak550')" class="moto-card bg-black rounded-2xl border border-white/10 overflow-hidden border-blue-500/50">
+                    <div class="bg-white h-56 flex items-center justify-center p-4">
+                        <img src="https://images.unsplash.com/photo-1449426468159-d96dbf08f19f?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover rounded" alt="AK 550">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold uppercase">AK 550 Premium</h3>
-                        <p class="text-blue-500 font-black text-2xl mt-1">11.999 €</p>
-                        <p class="text-gray-400 text-sm mt-4">Máximas prestaciones y tecnología inteligente Noodoe.</p>
+                        <h3 class="font-bold uppercase text-lg">AK 550 Premium</h3>
+                        <p class="text-blue-500 font-black text-xl">11.999 €</p>
+                        <p class="text-xs text-gray-500 mt-2 font-bold uppercase"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Ver detalles</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="ubicacion" class="py-24 max-w-7xl mx-auto px-6">
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-                <h2 class="text-4xl font-black italic uppercase mb-6">NUESTRA <span class="text-red-600">TIENDA</span></h2>
-                <p class="text-gray-400 mb-8 leading-relaxed">Ven a vernos y prueba tu futura moto. Estamos en el corazón de Albacete con taller oficial propio.</p>
-                <div class="space-y-4">
-                    <div class="flex items-center gap-4">
-                        <div class="w-10 h-10 bg-red-600/10 rounded-lg flex items-center justify-center text-red-600">
-                            <i class="fa-solid fa-location-dot"></i>
-                        </div>
-                        <p class="font-bold">Calle Rosario, 98, 02003 Albacete</p>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <div class="w-10 h-10 bg-red-600/10 rounded-lg flex items-center justify-center text-red-600">
-                            <i class="fa-solid fa-clock"></i>
-                        </div>
-                        <p class="font-bold uppercase text-sm italic text-gray-400">Lun-Vie: 9:30-14:00 | 16:30-20:00</p>
-                    </div>
-                </div>
+    <div id="moto-modal" class="hidden fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 overflow-y-auto">
+        <div class="modal-content bg-zinc-900 border border-gray-700 rounded-3xl max-w-5xl w-full flex flex-col md:flex-row relative mt-10 mb-10 shadow-2xl">
+            
+            <button onclick="cerrarMoto()" class="absolute top-4 right-4 bg-red-600 hover:bg-red-500 text-white w-10 h-10 rounded-full font-black text-xl flex items-center justify-center z-10 transition">
+                &times;
+            </button>
+
+            <div class="w-full md:w-1/2 bg-white rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none p-2 flex items-center justify-center min-h-[300px]">
+                <img id="modal-img" src="" class="w-full h-full object-cover rounded-2xl" alt="Moto">
             </div>
-            <div class="h-80 rounded-3xl overflow-hidden border border-white/10 grayscale hover:grayscale-0 transition-all duration-700">
-                <iframe src="http://googleusercontent.com/maps.google.com/3" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+            <div class="w-full md:w-1/2 p-8 flex flex-col justify-center">
+                <p id="modal-marca" class="text-gray-400 font-bold tracking-widest text-sm uppercase mb-1"></p>
+                <h2 id="modal-titulo" class="text-4xl font-black italic uppercase mb-2"></h2>
+                <p id="modal-precio" class="text-3xl font-black text-red-500 mb-6"></p>
+                
+                <div class="bg-black p-6 rounded-xl border border-white/5 space-y-4">
+                    <h4 class="font-bold uppercase text-sm border-b border-white/10 pb-2">Especificaciones Técnicas</h4>
+                    <ul class="space-y-3 text-gray-300 text-sm" id="modal-specs">
+                        </ul>
+                </div>
+
+                <a href="https://wa.me/34600000000" class="mt-8 bg-green-600 hover:bg-green-500 text-white font-bold py-4 rounded-xl text-center uppercase tracking-widest transition">
+                    Me interesa esta moto
+                </a>
             </div>
         </div>
-    </section>
+    </div>
 
-    <footer class="py-12 text-center border-t border-white/5">
-        <p class="text-[10px] text-gray-600 tracking-[0.4em] uppercase">© 2026 Motos González | Desarrollo por Scale Web Studio</p>
-    </footer>
+    <script>
+        // Base de datos de todas las motos con sus especificaciones
+        const baseDeDatos = {
+            'mrt50': {
+                marca: 'Rieju',
+                titulo: 'MRT 50 SM PRO',
+                precio: '3.742 €',
+                img: 'https://images.unsplash.com/photo-1568772585407-9361f9bf3c87?q=80&w=1200&auto=format&fit=crop',
+                colorPrecio: 'text-red-500',
+                specs: [
+                    '<b>Motor:</b> 50cc, 2 Tiempos Minarelli AM6',
+                    '<b>Potencia:</b> Apta para licencia AM (Ciclomotor)',
+                    '<b>Chasis:</b> Doble viga perimetral de acero de alta resistencia',
+                    '<b>Frenos:</b> Disco Galfer Wave (300mm del. / 200mm tras.)',
+                    '<b>Peso:</b> 85 kg'
+                ]
+            },
+            'aventura500': {
+                marca: 'Rieju',
+                titulo: 'Aventura 500 Legend',
+                precio: '7.399 €',
+                img: 'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?q=80&w=1200&auto=format&fit=crop',
+                colorPrecio: 'text-red-500',
+                specs: [
+                    '<b>Motor:</b> 500cc, 4 Tiempos, Bicilíndrico',
+                    '<b>Potencia:</b> 47 CV (Apta para carnet A2)',
+                    '<b>Autonomía:</b> Depósito dual de 40 Litros (hasta 1.000km)',
+                    '<b>Suspensiones:</b> Horquilla invertida regulable',
+                    '<b>Peso:</b> 190 kg (en seco)'
+                ]
+            },
+            'century125': {
+                marca: 'Rieju',
+                titulo: 'Century 125',
+                precio: '3.599 €',
+                img: 'https://images.unsplash.com/photo-1615172282427-9a57ef2d142e?q=80&w=1200&auto=format&fit=crop',
+                colorPrecio: 'text-red-500',
+                specs: [
+                    '<b>Motor:</b> 125cc, 4 Tiempos, 4 Válvulas, Inyección electrónica',
+                    '<b>Potencia:</b> 15 CV (Límite carnet B/A1)',
+                    '<b>Frenos:</b> Sistema CBS con discos lobulados',
+                    '<b>Estilo:</b> Scrambler / Neo-Retro',
+                    '<b>Peso:</b> 135 kg'
+                ]
+            },
+            'agility125': {
+                marca: 'Kymco',
+                titulo: 'Agility City 125',
+                precio: '2.399 €',
+                img: 'https://images.unsplash.com/photo-1591157419139-2ce181a4eb8b?q=80&w=1200&auto=format&fit=crop',
+                colorPrecio: 'text-blue-500',
+                specs: [
+                    '<b>Motor:</b> 125cc, 4 Tiempos, Inyección electrónica',
+                    '<b>Potencia:</b> 9 CV a 8.500 rpm',
+                    '<b>Llantas:</b> Rueda alta (16" delante, 14" detrás)',
+                    '<b>Equipamiento:</b> Suelo plano y baúl incluido',
+                    '<b>Peso:</b> 131 kg'
+                ]
+            },
+            'dtx125': {
+                marca: 'Kymco',
+                titulo: 'DTX 125',
+                precio: '4.399 €',
+                img: 'https://images.unsplash.com/photo-1621008620894-323eaf4eec57?q=80&w=1200&auto=format&fit=crop',
+                colorPrecio: 'text-blue-500',
+                specs: [
+                    '<b>Motor:</b> 125cc, 4 Válvulas, refrigeración líquida',
+                    '<b>Potencia:</b> 12.8 CV a 9.000 rpm',
+                    '<b>Tecnología:</b> Smart Key (Arranque sin llave)',
+                    '<b>Neumáticos:</b> Mixtos para asfalto y tierra',
+                    '<b>Peso:</b> 179 kg'
+                ]
+            },
+            'ak550': {
+                marca: 'Kymco',
+                titulo: 'AK 550 Premium',
+                precio: '11.999 €',
+                img: 'https://images.unsplash.com/photo-1449426468159-d96dbf08f19f?q=80&w=1200&auto=format&fit=crop',
+                colorPrecio: 'text-blue-500',
+                specs: [
+                    '<b>Motor:</b> 550cc, Bicilíndrico en línea',
+                    '<b>Potencia:</b> 51 CV (Apta para A2 con limitación)',
+                    '<b>Frenos:</b> Pinzas Brembo radiales y AIBS (ABS en curva)',
+                    '<b>Tecnología:</b> Control de crucero, puños calefactables y Noodoe',
+                    '<b>Transmisión:</b> Correa de fibra de carbono'
+                ]
+            }
+        };
 
-</body>
-</html>
-    </footer>
+        // Función para abrir la ventana en grande
+        function abrirMoto(id) {
+            const moto = baseDeDatos[id];
+            
+            document.getElementById('modal-img').src = moto.img;
+            document.getElementById('modal-marca').innerText = moto.marca;
+            document.getElementById('modal-titulo').innerText = moto.titulo;
+            
+            const precioEl = document.getElementById('modal-precio');
+            precioEl.innerText = moto.precio;
+            precioEl.className = `text-3xl font-black mb-6 ${moto.colorPrecio}`;
 
+            // Llenar la lista de especificaciones
+            const specsUl = document.getElementById('modal-specs');
+            specsUl.innerHTML = ''; // Limpiar anteriores
+            moto.specs.forEach(spec => {
+                const li = document.createElement('li');
+                li.innerHTML = `<i class="fa-solid fa-check text-gray-500 mr-2"></i> ${spec}`;
+                specsUl.appendChild(li);
+            });
+
+            // Mostrar el modal quitando la clase hidden
+            const modal = document.getElementById('moto-modal');
+            modal.classList.remove('hidden');
+            // Evitar que el fondo se mueva
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Función para cerrar la ventana
+        function cerrarMoto() {
+            const modal = document.getElementById('moto-modal');
+            modal.classList.add('hidden');
+            // Devolver el movimiento al fondo
+            document.body.style.overflow = 'auto';
+        }
+    </script>
 </body>
 </html>
