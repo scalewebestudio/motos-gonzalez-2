@@ -3,53 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Motos González | Concesionario Oficial Rieju & Kymco Albacete</title>
+    <title>Motos González | Concesionario Albacete</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        .card-hover { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .card-hover:hover { transform: translateY(-12px); border-color: #ef4444; }
-        .img-zoom { transition: transform 0.6s ease; }
-        .card-hover:hover .img-zoom { transform: scale(1.1); }
-    </style>
 </head>
 <body class="bg-black text-white font-sans">
 
-    <div class="bg-red-600 py-1.5 px-4 text-center text-xs font-bold uppercase tracking-widest">
-        <i class="fa-solid fa-truck-fast mr-2"></i> Envío a Albacete y Provincia | Financiación inmediata
-    </div>
-
-    <header class="sticky top-0 z-50 bg-black/95 backdrop-blur-sm border-b border-gray-800">
+    <header class="sticky top-0 z-50 bg-black border-b border-gray-800">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-black italic tracking-tighter">
-                MOTOS <span class="text-red-600">GONZÁLEZ</span>
-            </div>
-            <nav class="hidden lg:flex gap-8 text-sm uppercase font-bold tracking-widest">
-                <a href="#rieju" class="hover:text-red-500 transition">Gama Rieju</a>
-                <a href="#kymco" class="hover:text-red-500 transition">Gama Kymco</a>
-                <a href="#taller" class="hover:text-red-500 transition">Taller Oficial</a>
-                <a href="#contacto" class="hover:text-red-500 transition">Ubicación</a>
-            </nav>
-            <a href="https://wa.me/34600000000" class="bg-red-600 text-white px-6 py-2 rounded-full font-bold text-sm hover:bg-white hover:text-black transition">
-                <i class="fa-brands fa-whatsapp mr-2"></i>WHATSAPP
-            </a>
+            <div class="text-2xl font-black italic">MOTOS <span class="text-red-600">GONZÁLEZ</span></div>
+            <a href="https://wa.me/34600000000" class="bg-red-600 px-4 py-2 rounded-full font-bold text-xs uppercase tracking-widest">WhatsApp</a>
         </div>
     </header>
 
-    <section class="relative h-[80vh] flex items-center justify-center overflow-hidden">
-        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1558981403-c5f9899a28bc?q=80&w=2070')] bg-cover bg-center opacity-50 scale-105 animate-pulse"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black"></div>
-        <div class="relative z-10 text-center px-4">
-            <h2 class="text-7xl md:text-9xl font-black mb-4 italic uppercase leading-none tracking-tighter text-white">RIEJU<br><span class="text-red-600 font-black">2026</span></h2>
-            <p class="text-xl text-gray-300 max-w-2xl mx-auto mb-8 font-light italic uppercase tracking-widest">Tu libertad empieza en Motos González Albacete</p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="#rieju" class="bg-red-600 px-10 py-4 rounded-sm font-black uppercase hover:bg-red-700 transition tracking-widest">Ver Catálogo</a>
+    <section class="py-16 max-w-7xl mx-auto px-6">
+        <h3 class="text-4xl font-black italic mb-12 uppercase">GAMA <span class="text-red-600">RIEJU</span></h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-zinc-900 rounded-xl overflow-hidden border border-gray-800">
+                <img src="https://motos-off-road.com/3912-thickbox_default/rieju-mrt-50-sm-pro.jpg" class="w-full h-56 object-contain bg-white p-2">
+                <div class="p-6">
+                    <h4 class="text-xl font-bold uppercase">MRT 50 SM PRO</h4>
+                    <p class="text-red-600 font-black text-2xl my-2">3.742€</p>
+                    <p class="text-gray-400 text-sm italic">Financiación disponible en tienda.</p>
+                </div>
+            </div>
+            <div class="bg-zinc-900 rounded-xl overflow-hidden border border-red-600">
+                <img src="https://motos.net.co/wp-content/uploads/2023/10/Rieju-Aventura-500-Legend-8.jpg" class="w-full h-56 object-contain bg-white p-2">
+                <div class="p-6">
+                    <h4 class="text-xl font-bold uppercase">Aventura 500 Legend</h4>
+                    <p class="text-red-600 font-black text-2xl my-2">7.399€</p>
+                    <p class="text-gray-400 text-sm">La Trail definitiva con 40L de depósito.</p>
+                </div>
+            </div>
+            <div class="bg-zinc-900 rounded-xl overflow-hidden border border-gray-800">
+                <img src="https://viviendoconmotos.com/wp-content/uploads/2018/05/rieju_century_125_7.jpg" class="w-full h-56 object-contain bg-white p-2">
+                <div class="p-6">
+                    <h4 class="text-xl font-bold uppercase">Century 125</h4>
+                    <p class="text-red-600 font-black text-2xl my-2">3.599€</p>
+                    <p class="text-gray-400 text-sm">Estética Neo-Retro con motor 15CV.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="rieju" class="py-24 max-w-7xl mx-auto px-6">
-        <div class="flex flex-col mb-16">
-            <h3 class="text-5xl font-black italic uppercase tracking-tighter italic">GAMA <span class="text-red-600">RIEJU</span></h3>
-            <p class="text-gray-500 font-bold uppercase text-sm tracking-widest">Concesionario Oficial</p>
+    <section class="py-16 bg-zinc-950 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h3 class="text-4xl font-black italic mb-12 uppercase">GAMA <span class="text-blue-500">KYMCO</span></h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-zinc-900 p-6 rounded-xl border border-gray-800">
+                    <img src="https://static.kymco.es/uploads/fichas/agility-city-125/colores/agility-city-125-azul.png" class="w-full h-48 object-contain mb-4">
+                    <h4 class="text-xl font-bold">AGILITY CITY 125</h4>
+                    <p class="text-blue-500 font-black text-2xl mt-2">2.399€</p>
+                </div>
+                <div class="bg-zinc-900 p-6 rounded-xl border border-gray-800">
+                    <img src="https://static.kymco.es/uploads/fichas/dtx-125/colores/dtx-125-naranja.png" class="w-full h-48 object-contain mb-4">
+                    <h4 class="text-xl font-bold">DTX 125</h4>
+                    <p class="text-blue-500 font-black text-2xl mt-2">4.399€</p>
+                </div>
+                <div class="bg-zinc-900 p-6 rounded-xl border border-gray-800">
+                    <img src="https://static.kymco.es/uploads/fichas/ak-550-premium/colores/ak-550-premium-negro.png" class="w-full h-48 object-contain mb-4">
+                    <h4 class="text-xl font-bold">AK 550 PREMIUM</h4>
+                    <p class="text-blue-500 font-black text-2xl mt-2">11.999€</p>
+                </div>
+            </div>
         </div>
+    </section>
+
+    <footer class="py-10 text-center text-gray-600 text-xs uppercase tracking-widest border-t border-gray-900">
+        © 2026 Motocicletas González Albacete | Scale Web Studio
+    </footer>
+
+</body>
+</html>
