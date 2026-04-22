@@ -1,64 +1,192 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Motos González | Catálogo 2026</title>
+    <title>Motos González | Concesionario Multi-Marca</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #000; }
-        .moto-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; border: 1px solid rgba(255,255,255,0.05); }
-        .moto-card:hover { transform: translateY(-10px); border-color: #ef4444; background: rgba(255,255,255,0.05); }
-        .tag-new { background: linear-gradient(90deg, #ff0000, #990000); animation: pulse 2s infinite; }
-        @keyframes pulse { 0% { opacity: 0.8; } 50% { opacity: 1; } 100% { opacity: 0.8; } }
-        #modal.hidden { display: none; }
+        body { background-color: #000; font-family: sans-serif; overflow-x: hidden; }
+        .view { display: none; min-height: 100vh; }
+        .view.active { display: block; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        
+        .card-moto { transition: transform 0.3s ease; cursor: pointer; border: 1px solid rgba(255,255,255,0.05); }
+        .card-moto:hover { transform: translateY(-10px); border-color: #ef4444; background: rgba(255,255,255,0.02); }
     </style>
 </head>
 <body class="text-white">
 
-    <header class="sticky top-0 z-50 bg-black/80 backdrop-blur-lg border-b border-white/10">
+    <nav class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-black italic tracking-tighter">MOTOS <span class="text-red-600">GONZÁLEZ</span></div>
-            <nav class="hidden md:flex gap-6 items-center">
-                <a href="#rieju" class="text-xs font-bold hover:text-red-600 uppercase tracking-widest">Gama Rieju</a>
-                <a href="#kymco" class="text-xs font-bold hover:text-blue-500 uppercase tracking-widest">Gama Kymco</a>
-                <a href="https://wa.me/34600000000" class="bg-red-600 px-5 py-2 rounded-full text-xs font-bold uppercase">Consultar Stock</a>
-            </nav>
+            <div onclick="irA('inicio')" class="text-2xl font-black cursor-pointer italic uppercase tracking-tighter">MOTOS <span class="text-red-600">GONZÁLEZ</span></div>
+            <div class="flex gap-4">
+                <button onclick="irA('rieju')" class="bg-red-600 px-5 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-red-700 transition shadow-lg shadow-red-600/20">Rieju</button>
+                <button onclick="irA('kymco')" class="bg-blue-600 px-5 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-blue-700 transition shadow-lg shadow-blue-600/20">Kymco</button>
+            </div>
         </div>
-    </header>
+    </nav>
 
-    <section id="rieju" class="py-20 max-w-7xl mx-auto px-6">
-        <div class="flex items-center gap-4 mb-12">
-            <h2 class="text-5xl font-black italic uppercase">RIEJU <span class="text-red-600">2026</span></h2>
-            <div class="h-[2px] flex-grow bg-gradient-to-r from-red-600 to-transparent"></div>
+    <div id="inicio" class="view active flex items-center justify-center pt-20">
+        <div class="max-w-7xl mx-auto px-6 py-20 text-center">
+            <h1 class="text-6xl md:text-8xl font-black italic mb-6 uppercase leading-none">EL PODER EN <br><span class="text-red-600">TUS MANOS</span></h1>
+            <p class="text-gray-400 text-xl mb-12 max-w-2xl mx-auto">Explora la gama más completa de Rieju y Kymco 2026. Rendimiento, diseño y tecnología.</p>
+            <div class="flex flex-col md:flex-row gap-8 justify-center">
+                <div onclick="irA('rieju')" class="group relative cursor-pointer overflow-hidden rounded-[2.5rem] h-80 w-80 bg-zinc-900 border border-white/10 flex items-center justify-center">
+                    <span class="text-5xl font-black italic group-hover:scale-110 transition duration-500 z-10">RIEJU</span>
+                    <div class="absolute inset-0 bg-gradient-to-t from-red-600/40 to-transparent group-hover:bg-red-600/60 transition"></div>
+                </div>
+                <div onclick="irA('kymco')" class="group relative cursor-pointer overflow-hidden rounded-[2.5rem] h-80 w-80 bg-zinc-900 border border-white/10 flex items-center justify-center">
+                    <span class="text-5xl font-black italic group-hover:scale-110 transition duration-500 z-10">KYMCO</span>
+                    <div class="absolute inset-0 bg-gradient-to-t from-blue-600/40 to-transparent group-hover:bg-blue-600/60 transition"></div>
+                </div>
+            </div>
         </div>
+    </div>
 
-        <h3 class="text-xl font-bold mb-6 text-gray-500 uppercase tracking-widest italic">// Enduro & Off-Road</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            <div onclick="abrirModal('mrpro300')" class="moto-card bg-zinc-900 p-4 rounded-3xl">
-                <div class="relative bg-white rounded-2xl p-4 mb-4 h-48 flex items-center justify-center">
-                    <span class="absolute top-2 right-2 tag-new text-[10px] font-bold px-2 py-1 rounded text-white">NEW 2026</span>
-                    <img src="https://www.rieju.es/storage/app/uploads/public/66f/29d/287/66f29d2875323933938555.png" class="max-h-full object-contain">
+    <div id="rieju" class="view pt-24 px-6 pb-20">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
+                <div>
+                    <h2 class="text-6xl font-black italic text-red-600 uppercase tracking-tighter">Gama Rieju</h2>
+                    <p class="text-gray-500 uppercase tracking-widest text-xs font-bold">Hard Off-Road & Street 2026</p>
                 </div>
-                <h4 class="font-black uppercase tracking-tighter">MR PRO 300i</h4>
-                <p class="text-red-500 font-bold">Consúltanos precio</p>
+                <button onclick="irA('inicio')" class="text-xs text-gray-500 hover:text-white uppercase font-bold underline decoration-red-600 underline-offset-8">Volver al menú principal</button>
             </div>
-            <div onclick="abrirModal('mrracing300')" class="moto-card bg-zinc-900 p-4 rounded-3xl">
-                <div class="bg-white rounded-2xl p-4 mb-4 h-48 flex items-center justify-center">
-                    <img src="https://www.rieju.es/storage/app/uploads/public/66f/29a/50b/66f29a50b7194639902636.png" class="max-h-full object-contain">
+            
+            <h3 class="text-xl font-bold mb-6 text-zinc-700 uppercase italic">// Hard Off-Road</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-16">
+                <div onclick="abrirAmazon('mrpro300')" class="card-moto bg-zinc-900 p-4 rounded-[2rem]">
+                    <div class="bg-white rounded-2xl h-48 flex items-center justify-center p-4 mb-4">
+                        <img src="mrpro300iroja.jpg" class="max-h-full object-contain">
+                    </div>
+                    <h3 class="font-bold uppercase text-sm">MR PRO 300i</h3>
+                    <p class="text-red-500 font-black">2026 Edition</p>
                 </div>
-                <h4 class="font-black uppercase tracking-tighter">MR RACING 300i</h4>
-                <p class="text-red-500 font-bold">Pura Competición</p>
+                <div onclick="abrirAmazon('mrracing300')" class="card-moto bg-zinc-900 p-4 rounded-[2rem]">
+                    <div class="bg-white rounded-2xl h-48 flex items-center justify-center p-4 mb-4">
+                        <img src="mrracing300iroja.jpg" class="max-h-full object-contain">
+                    </div>
+                    <h3 class="font-bold uppercase text-sm">MR RACING 300i</h3>
+                    <p class="text-red-500 font-black">Ready to Race</p>
+                </div>
+                <div onclick="abrirAmazon('rally307r')" class="card-moto bg-zinc-900 p-4 rounded-[2rem]">
+                    <div class="bg-white rounded-2xl h-48 flex items-center justify-center p-4 mb-4">
+                        <img src="aventurarally307rroja.jpg" class="max-h-full object-contain">
+                    </div>
+                    <h3 class="font-bold uppercase text-sm">Aventura Rally 307R</h3>
+                    <p class="text-red-500 font-black">New Model</p>
+                </div>
             </div>
-            <div onclick="abrirModal('mrt50pro')" class="moto-card bg-zinc-900 p-4 rounded-3xl">
-                <div class="bg-white rounded-2xl p-4 mb-4 h-48 flex items-center justify-center">
-                    <img src="https://www.rieju.es/storage/app/uploads/public/605/323/ed1/605323ed158f1212879532.png" class="max-h-full object-contain">
+
+            <h3 class="text-xl font-bold mb-6 text-zinc-700 uppercase italic">// Supermotard & Street</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div onclick="abrirAmazon('mrt50smpro')" class="card-moto bg-zinc-900 p-4 rounded-[2rem]">
+                    <div class="bg-white rounded-2xl h-48 flex items-center justify-center p-4 mb-4">
+                        <img src="mrt50smpro.jpg" class="max-h-full object-contain">
+                    </div>
+                    <h3 class="font-bold uppercase text-sm">MRT 50 SM PRO</h3>
+                    <p class="text-red-500 font-black">Top Speed</p>
                 </div>
-                <h4 class="font-black uppercase tracking-tighter">MRT 50 PRO</h4>
-                <p class="text-red-500 font-bold">La reina del 50cc</p>
+                <div onclick="abrirAmazon('tango125')" class="card-moto bg-zinc-900 p-4 rounded-[2rem]">
+                    <div class="bg-white rounded-2xl h-48 flex items-center justify-center p-4 mb-4">
+                        <img src="tango125l.jpg" class="max-h-full object-contain">
+                    </div>
+                    <h3 class="font-bold uppercase text-sm">Tango 125i</h3>
+                    <p class="text-red-500 font-black">Scrambler</p>
+                </div>
             </div>
-            <div onclick="abrirModal('marathon125')" class="moto-card bg-zinc-900 p-4 rounded-3xl">
-                <div class="bg-white rounded-2xl p-4 mb-4 h-48 flex items-center justify-center">
-                    <img src="https://www.rieju.es/storage/app/uploads/public/5aa/fb2/204/5aafb2204c355835260172.png" class="max-h-full object-contain">
+        </div>
+    </div>
+
+    <div id="kymco" class="view pt-24 px-6 pb-20">
+        <div class="max-w-7xl mx-auto text-center py-20">
+            <h2 class="text-6xl font-black italic text-blue-500 uppercase mb-8">Gama Kymco</h2>
+            <div class="bg-zinc-900 p-20 rounded-[3rem] border border-blue-500/20">
+                <p class="text-2xl text-gray-400 font-bold">PRÓXIMAMENTE DISPONIBLE</p>
+                <p class="text-gray-600 mt-4 italic">Estamos preparando el catálogo de Scooters para ti.</p>
+                <button onclick="irA('inicio')" class="mt-8 text-blue-500 font-bold underline">VOLVER</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-amazon" class="hidden fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex items-center justify-center p-4">
+        <div class="bg-zinc-900 border border-white/10 rounded-[3rem] max-w-5xl w-full flex flex-col md:flex-row overflow-hidden relative shadow-2xl animate-in zoom-in duration-300">
+            <button onclick="cerrarAmazon()" class="absolute top-6 right-6 text-white text-3xl font-black bg-red-600 w-12 h-12 rounded-full flex items-center justify-center hover:rotate-90 transition-all z-10">&times;</button>
+            
+            <div class="md:w-1/2 bg-white p-10 flex items-center justify-center">
+                <img id="modal-img" src="" class="max-h-[400px] w-full object-contain drop-shadow-2xl">
+            </div>
+            
+            <div class="md:w-1/2 p-10 md:p-14 flex flex-col justify-center">
+                <h2 id="modal-title" class="text-5xl font-black italic uppercase leading-tight mb-6 tracking-tighter">MOTO</h2>
+                <div class="space-y-4">
+                    <div class="bg-black/50 p-8 rounded-3xl border border-white/5">
+                        <p class="text-[10px] font-bold text-red-600 uppercase tracking-[0.3em] mb-4">Especificaciones Técnicas</p>
+                        <ul id="modal-specs" class="space-y-3 text-gray-300 text-sm font-medium">
+                            </ul>
+                    </div>
+                    <a href="https://wa.me/34600000000" class="flex items-center justify-center gap-3 w-full bg-green-600 text-white py-5 rounded-2xl font-black uppercase tracking-widest hover:bg-green-500 transition shadow-lg shadow-green-600/20">
+                        <i class="fa-brands fa-whatsapp text-2xl"></i> Consultar Stock
+                    </a>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function irA(idVista) {
+            document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+            document.getElementById(idVista).classList.add('active');
+            window.scrollTo(0,0);
+        }
+
+        // BASE DE DATOS CON TUS FOTOS REALES
+        const database = {
+            'mrpro300': { 
+                t: 'MR PRO 300i 2026', 
+                i: 'mrpro300iroja.jpg', 
+                s: ['Motor: 2 Tiempos Inyección', 'Suspensión KYB Pro con tratamiento', 'Llantas Excel de serie', 'Embrague Magura'] 
+            },
+            'mrracing300': { 
+                t: 'MR RACING 300i', 
+                i: 'mrracing300iroja.jpg', 
+                s: ['Motor: 2T de alto rendimiento', 'Horquilla KYB 48mm', 'Frenos Nissin', 'Escape PowerCore'] 
+            },
+            'rally307r': { 
+                t: 'Aventura Rally 307R', 
+                i: 'aventurarally307rroja.jpg', 
+                s: ['Doble depósito de gasolina', 'Torre de navegación Rally', 'Motor 300cc optimizado', 'Protecciones de cárter de serie'] 
+            },
+            'mrt50smpro': { 
+                t: 'MRT 50 SM PRO', 
+                i: 'mrt50smpro.jpg', 
+                s: ['Motor Minarelli AM6', 'Horquilla invertida de 40mm', 'Frenos Galfer Wave', 'Nuevos gráficos 2026'] 
+            },
+            'tango125': { 
+                t: 'Tango 125i', 
+                i: 'tango125l.jpg', 
+                s: ['Motor 125cc Inyección', 'Asiento de baja altura', 'Frenada combinada CBS', 'Ideal para ciudad y caminos'] 
+            }
+        };
+
+        function abrirAmazon(id) {
+            const data = database[id];
+            document.getElementById('modal-img').src = data.i;
+            document.getElementById('modal-title').innerText = data.t;
+            const specs = document.getElementById('modal-specs');
+            specs.innerHTML = '';
+            data.s.forEach(item => specs.innerHTML += `<li class="flex items-center gap-3"><i class="fa-solid fa-check text-red-600"></i> ${item}</li>`);
+            
+            document.getElementById('modal-amazon').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function cerrarAmazon() {
+            document.getElementById('modal-amazon').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+    </script>
+</body>
+</html>
