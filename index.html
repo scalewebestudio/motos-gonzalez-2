@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motos González | Concesionario Oficial Rieju & Kymco Albacete</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .card-hover { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .card-hover:hover { transform: translateY(-12px); border-color: #ef4444; }
+        .img-zoom { transition: transform 0.6s ease; }
+        .card-hover:hover .img-zoom { transform: scale(1.1); }
+    </style>
+</head>
+<body class="bg-black text-white font-sans">
+
+    <div class="bg-red-600 py-1.5 px-4 text-center text-xs font-bold uppercase tracking-widest">
+        <i class="fa-solid fa-truck-fast mr-2"></i> Envío a Albacete y Provincia | Financiación inmediata
+    </div>
+
+    <header class="sticky top-0 z-50 bg-black/95 backdrop-blur-sm border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-black italic tracking-tighter">
+                MOTOS <span class="text-red-600">GONZÁLEZ</span>
+            </div>
+            <nav class="hidden lg:flex gap-8 text-sm uppercase font-bold tracking-widest">
+                <a href="#rieju" class="hover:text-red-500 transition">Gama Rieju</a>
+                <a href="#kymco" class="hover:text-red-500 transition">Gama Kymco</a>
+                <a href="#taller" class="hover:text-red-500 transition">Taller Oficial</a>
+                <a href="#contacto" class="hover:text-red-500 transition">Ubicación</a>
+            </nav>
+            <a href="https://wa.me/34600000000" class="bg-red-600 text-white px-6 py-2 rounded-full font-bold text-sm hover:bg-white hover:text-black transition">
+                <i class="fa-brands fa-whatsapp mr-2"></i>WHATSAPP
+            </a>
+        </div>
+    </header>
+
+    <section class="relative h-[80vh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1558981403-c5f9899a28bc?q=80&w=2070')] bg-cover bg-center opacity-50 scale-105 animate-pulse"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black"></div>
+        <div class="relative z-10 text-center px-4">
+            <h2 class="text-7xl md:text-9xl font-black mb-4 italic uppercase leading-none tracking-tighter text-white">RIEJU<br><span class="text-red-600 font-black">2026</span></h2>
+            <p class="text-xl text-gray-300 max-w-2xl mx-auto mb-8 font-light italic uppercase tracking-widest">Tu libertad empieza en Motos González Albacete</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#rieju" class="bg-red-600 px-10 py-4 rounded-sm font-black uppercase hover:bg-red-700 transition tracking-widest">Ver Catálogo</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="rieju" class="py-24 max-w-7xl mx-auto px-6">
+        <div class="flex flex-col mb-16">
+            <h3 class="text-5xl font-black italic uppercase tracking-tighter italic">GAMA <span class="text-red-600">RIEJU</span></h3>
+            <p class="text-gray-500 font-bold uppercase text-sm tracking-widest">Concesionario Oficial</p>
+        </div>
